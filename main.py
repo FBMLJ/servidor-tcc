@@ -10,5 +10,14 @@ df['weekday'] = df['Datetime'].dt.weekday
 df['year'] = df['Datetime'].dt.year
 df = df.query("year != 2018 and year!=2004")
 df['year'].value_counts()
-print(df)
-df.to_csv( "file.csv",index=False )
+
+
+delta =df['AEP_MW'].max()- df['AEP_MW'].min()
+df["grupo"] = -10000
+for i in range(8):
+   df["grupo"] = (df['AEP_MW'] - df['AEP_MW'].min())/(delta/8)
+
+df["grupo"] = df["grupo"].astype(int)
+print(df.grupo.max())
+print(df.grupo.min())
+df[['hour','day','month','weekday','year','grupo']].to_csv( "file.csv",index=False )

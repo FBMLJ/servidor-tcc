@@ -20,4 +20,4 @@ for i in range(8):
 df["grupo"] = df["grupo"].astype(int)
 print(df.grupo.max())
 print(df.grupo.min())
-df[['hour','day','month','weekday','year','grupo']].to_csv( "file.csv",index=False )
+df[['hour','month','weekday','year','grupo']].to_csv( "file.csv",index=False )

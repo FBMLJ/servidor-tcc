@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
   })
 app.get("/data/:id", (req,res) => {
     const id =req.params.id
+    console.log('--------')
     fs.readFile('./file.csv', 'utf8', (err, data) => {
         const line = data.split('\n')[id]
         if (err) {
